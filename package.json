@@ -1,6 +1,6 @@
 {
   "name": "cli-radio",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository" : "https://github.com/harmjanluth/cli-radio",
   "description": "Command Line Radio (NL)",
   "author": "Harm Jan Luth",
