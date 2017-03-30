@@ -8,4 +8,5 @@ npm install cli-radio -g
 * radio -channel=radio1
 * radio -channel=2
 * radio -remote=http://www.domain.com/my-music.mp3
+* radio -help
 * radio list
