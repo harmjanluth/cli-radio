@@ -1,18 +1,18 @@
 {
   "name": "cli-radio",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "repository" : "https://github.com/harmjanluth/cli-radio",
   "description": "Command Line Radio (NL)",
+  "author": "Harm Jan Luth",
+  "license": "GPL-3.0",
   "main": "index.js",
   "dependencies": {
     "shelljs": "^0.7.7",
-    "speaker": "^0.3.0"
+    "speaker": "^0.3.0",
+    "request": "^2.81.0",
+    "lame"   : "^1.2.4" 
   },
   "bin": {
-    "radio": "bin/init.js --silent"
-  },
-  "files": [
-    "bin"
-  ],
-  "author": "Harm Jan Luth",
-  "license": "ISC"
+    "radio": "./index.js"
+  }
 }

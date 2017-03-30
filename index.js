@@ -1,10 +1,11 @@
 #! /usr/bin/env node
-const shell     = require("shelljs");
+const shell     = require('shelljs');
 const lame      = require('lame');
 const Speaker   = require('speaker');
 const request   = require('request');
-const utils     = require('../utils');
-const channels  = require('../channel_list');
+
+const utils     = require('./utils');
+const channels  = require('./channel_list');
 
 const decoder   = new lame.Decoder();
 const params    = utils.getCLIParams();
