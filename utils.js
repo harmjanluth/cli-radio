@@ -5,6 +5,9 @@ function getCLIParams() {
       let parts = arg.split('=');
       params[parts[0]] = parts[1];
     }
+    if(arg === 'list') {
+      params['list'] = 1;
+    }
   });
   return params;
 }

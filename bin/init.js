@@ -9,8 +9,34 @@ const channels  = require('../channel_list');
 const decoder   = new lame.Decoder();
 const params    = utils.getCLIParams();
 
+if(params['list']) {
+  shell.echo(`
+  .: CLI Radio :.
+
+  eg: radio -channel=radio1`);
+
+  printRadioList();
+  shell.exit(1);
+}
+
+// Remote source
+if(params['-remote'] || params['-r']) {
+  const custom = params['-remote'] || params['-r'];
+
+  shell.echo(`
+  .: CLI Radio :.  '${custom}'  (Ctrl+C to quit)`);
+
+  const mp3 = request(custom);
+
+  mp3.pipe(decoder).on('format', function(format) {
+        const speaker = new Speaker(format);
+        this.pipe(speaker);
+    });
+
+  shell.exec('echo "\033]0;.: CLI Radio :.\007"');
+}
 // Missing channel name
-if(!params['--channel'] && !params['--c']) {
+else if(!params['-channel'] && !params['-c']) {
   shell.echo(`
   .: CLI Radio :.
   `);
@@ -18,15 +44,14 @@ if(!params['--channel'] && !params['--c']) {
   shell.echo(`
   Select a channel first
       
-  eg: radio --channel=radio1
+  eg: radio -channel=radio1
   `);  
 
   printRadioList();
   shell.exit(1);
 }
-
 else {
-  let radio = params['--channel'] || params['--c'];
+  let radio = params['-channel'] || params['-c'];
 
   // If option is numeric, use index of list
   if(!isNaN(radio)) {
@@ -57,7 +82,7 @@ else {
     
     shell.echo(`  '${radio}' is not a valid option, pick an available option.
 
-  eg: radio --channel=radio1`);  
+  eg: radio -channel=radio1`);  
 
     printRadioList();
 
