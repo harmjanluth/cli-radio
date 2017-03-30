@@ -10,6 +10,9 @@
   "bin": {
     "radio": "bin/init.js --silent"
   },
+  "files": [
+    "bin"
+  ],
   "author": "Harm Jan Luth",
   "license": "ISC"
 }
