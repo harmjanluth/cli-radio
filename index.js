@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 const shell     = require('shelljs');
+shell.env['NODE_NO_WARNINGS'] = 1;
+
 const lame      = require('lame');
-const Speaker   = require('speaker');
+const Speaker   = require('audio-speaker/stream');
 const request   = require('request');
 
 const utils     = require('./utils');
@@ -17,6 +19,20 @@ if(params['list']) {
   eg: radio -channel=radio1`);
 
   printRadioList();
+  shell.exit(1);
+}
+
+// Help
+if(params['help']) {
+  shell.echo(`
+  .: CLI Radio :.
+
+  -channel or -c      radio channel name or list id    - 'radio538' or '2'
+  -remote or -r       url for remote stream (MP3)      - 'http://www.domain.com/my-stream.mp3'
+
+  list                list of available channels (nl)
+  `);
+
   shell.exit(1);
 }
 
@@ -43,7 +59,7 @@ else if(!params['-channel'] && !params['-c']) {
   `);
 
   shell.echo(`
-  Select a channel first
+  Specify a channel:
       
   eg: radio -channel=radio1
   `);  
@@ -93,7 +109,6 @@ else {
 }
 
 function printRadioList() {
-  //shell.exec('printf "  |   Radio   |   Option   |\n" ');
   let list = '';
   let count = 1;
 

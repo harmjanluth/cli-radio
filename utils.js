@@ -8,6 +8,9 @@ function getCLIParams() {
     if(arg === 'list') {
       params['list'] = 1;
     }
+    if(arg === '-h' || arg === '-help') {
+      params['help'] = 1;
+    }
   });
   return params;
 }

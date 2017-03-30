@@ -8,7 +8,7 @@
   "main": "index.js",
   "dependencies": {
     "shelljs": "^0.7.7",
-    "speaker": "^0.3.0",
+    "audio-speaker": "^1.4.3",
     "request": "^2.81.0",
     "lame"   : "^1.2.4" 
   },
